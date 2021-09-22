@@ -1,0 +1,49 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/logout",
+      "handler": "Custom.logout"
+    },
+    {
+      "method": "GET",
+      "path": "/users/not-friends",
+      "handler": "Custom.notFriends",
+      "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated"]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users/:id/friends",
+      "handler": "Custom.getFriends",
+      "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated"]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users/:id/posts",
+      "handler": "Custom.getPosts",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users/:id/is-friend",
+      "handler": "Custom.isFriend",
+      "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated"]
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/users/:id",
+      "handler": "Custom.update",
+      "config": {
+          "policies": ["plugins::users-permissions.isAuthenticated"]
+      }
+  }
+  ]
+}

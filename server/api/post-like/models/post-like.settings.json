@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "post-like",
+  "info": {
+    "name": "post-like",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "post": {
+      "model": "post"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

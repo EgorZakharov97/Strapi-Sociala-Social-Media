@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/posts",
+      "handler": "post.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/posts/count",
+      "handler": "post.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/posts/:id",
+      "handler": "post.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/posts",
+      "handler": "post.create",
+      "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated", "global::add-post-owner"]
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/posts/:id",
+      "handler": "post.update",
+      "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated", "global::is-post-owner"]
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/posts/:id",
+      "handler": "post.delete",
+      "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated", "global::is-post-owner", "global::post-delete-cascade"]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/posts/:id/like",
+      "handler": "post.likeOrDislike",
+      "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated"]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/posts/:id/like/count",
+      "handler": "post.countLikes",
+      "config": {
+        "policies": ["plugins::users-permissions.isAuthenticated"]
+      }
+    }
+  ]
+}
